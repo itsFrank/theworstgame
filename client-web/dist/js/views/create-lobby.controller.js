@@ -23,10 +23,7 @@ app.controller('createLobbyController', function($scope, $socket, $mdDialog, $lo
 
         $scope.loading = true;
 
-        $socket.createLobby($scope.name, function(){
-            $scope.loading = false;
-            $location.path('/lobby');
-        });
+        $socket.createLobby($scope.name);
 
     };
 });

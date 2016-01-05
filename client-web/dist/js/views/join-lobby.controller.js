@@ -66,27 +66,6 @@ app.controller('joinLobbyController', function($scope, $socket, $mdDialog, $game
 
         $scope.loading = true;
 
-        $socket.joinLobby($scope.code, $scope.name, function(success){
-            console.log($gameData.player);
-            console.log($gameData.lobby);
-
-            $scope.loading = false;
-
-
-
-            if (success) $location.path('/lobby');
-            else {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('Connection Error')
-                        .textContent('Could not connect to game with code: \'' + $scope.code + '\'   verify that code is correct and try again')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Ok')
-                        .targetEvent(ev)
-                );
-            }
-        });
+        $socket.joinLobby($scope.code, $scope.name);
     };
 });
