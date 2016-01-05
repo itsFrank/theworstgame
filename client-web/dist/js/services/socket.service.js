@@ -1,4 +1,4 @@
-app.factory('$socket', function($gameData, $location, $mdDialog){
+app.factory('$socket', function($gameData, $location, $mdDialog, $rootScope){
     var socket_obj = {
         id : null,
         socket : null,
@@ -72,7 +72,10 @@ app.factory('$socket', function($gameData, $location, $mdDialog){
             console.log(message);
             $gameData.player = message.data.player;
             $gameData.lobby = message.data.lobby;
-            $location.path('/lobby');
+            $rootScope.$apply(function() {
+                $location.path("/lobby");
+                console.log($location.path());
+            });
         });
 
     };
@@ -109,7 +112,10 @@ app.factory('$socket', function($gameData, $location, $mdDialog){
 
             $gameData.player = message.data.player;
             $gameData.lobby = message.data.lobby;
-            $location.path('/lobby');
+            $rootScope.$apply(function() {
+                $location.path("/lobby");
+                console.log($location.path());
+            });
         });
     };
 

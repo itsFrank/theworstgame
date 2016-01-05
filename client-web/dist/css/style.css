@@ -38,24 +38,6 @@ body {
   .main-input:focus {
     border: solid 2px #3498db; }
 
-#home-container {
-  position: relative;
-  height: 100%;
-  width: 100%; }
-  #home-container #home-content {
-    width: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-    #home-container #home-content #main-title {
-      text-align: center;
-      margin: 5% auto; }
-    #home-container #home-content #button-container .btn-flex {
-      margin: 2%; }
-      #home-container #home-content #button-container .btn-flex .home-menu-btn {
-        width: 100%; }
-
 #create-lobby-container {
   position: relative;
   height: 100%;
@@ -86,6 +68,24 @@ body {
       margin: 5% auto; }
     #create-lobby-container #create-loading md-progress-circular {
       margin: 0 auto; }
+
+#home-container {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  #home-container #home-content {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    #home-container #home-content #main-title {
+      text-align: center;
+      margin: 5% auto; }
+    #home-container #home-content #button-container .btn-flex {
+      margin: 2%; }
+      #home-container #home-content #button-container .btn-flex .home-menu-btn {
+        width: 100%; }
 
 #join-lobby-container {
   position: relative;
