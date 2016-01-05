@@ -1,0 +1,20 @@
+<div id="create-lobby-container" ngController="createLobbyController">
+    <div ng-if="!loading" id="create-content">
+        <h1 id="main-title">Create New Game</h1>
+        <div id="form-container" layout="column">
+            <div class="create-flex" flex>
+                <h3>Your name:</h3>
+            </div>
+            <div class="create-flex" flex>
+                <input class="main-input" ng-model="$parent.name">
+            </div>
+            <div class="create-flex confirm-container" flex>
+                <md-button ng-click="create($event)" md-no-ink="true" class="md-raised md-accent no-margin">Create Game</md-button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="loading" id="create-loading">
+        <h2 id="main-title">Creating new game...</h2>
+        <md-progress-circular  md-diameter="100" class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    </div>
+</div>

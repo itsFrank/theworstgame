@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>The Worst Game</title>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../../bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css" />
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/client-web/dist/css/style.css">
+    <!-- endinject -->
+</head>
+<body>
+<div id="main-view" ng-view></div>
+
+<!-- bower:js -->
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../../bower_components/angular-material/angular-material.js"></script>
+<script src="../../bower_components/angular-route/angular-route.js"></script>
+<!-- endbower -->
+
+<script src="/socket.io/socket.io.js"></script>
+<!-- inject:js -->
+<script src="/client-web/dist/js/app.js"></script>
+<script src="/client-web/dist/js/services/game-data.service.js"></script>
+<script src="/client-web/dist/js/services/socket.directive.js"></script>
+<script src="/client-web/dist/js/services/socket.js"></script>
+<script src="/client-web/dist/js/services/socket.service.js"></script>
+<script src="/client-web/dist/js/views/blank.controller.js"></script>
+<script src="/client-web/dist/js/views/create-lobby.controller.js"></script>
+<script src="/client-web/dist/js/views/home.controller.js"></script>
+<script src="/client-web/dist/js/views/join-lobby.controller.js"></script>
+<script src="/client-web/dist/js/views/lobby.controller.js"></script>
+<script src="/client-web/dist/js/views/player-order.filter.js"></script>
+<script src="/client-web/dist/js/directives/blank.directive.js"></script>
+<!-- endinject -->
+
+</body>
+</html>

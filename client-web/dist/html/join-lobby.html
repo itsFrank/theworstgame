@@ -1,0 +1,26 @@
+<div id="join-lobby-container" ngController="joinLobbyController">
+    <div ng-if="!loading" id="join-content">
+        <h1 id="main-title">Join Game</h1>
+        <div id="form-container" layout="column">
+            <div class="join-flex" flex>
+                <h3>Room Code:</h3>
+            </div>
+            <div class="join-flex" flex>
+                <input class="main-input room-code" ng-change="fixCode()" ng-model="$parent.code" ng-trim="false">
+            </div>
+            <div class="join-flex" flex>
+                <h3>Your name:</h3>
+            </div>
+            <div class="join-flex" flex>
+                <input class="main-input" ng-model="$parent.name" ng-change="fixName()" ng-trim="false">
+            </div>
+            <div class="join-flex confirm-container" flex>
+                <md-button ng-click="join($event)" md-no-ink="true" class="md-raised md-accent no-margin">Join Game</md-button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="loading" id="join-loading">
+        <h2 id="main-title">Joining game...</h2>
+        <md-progress-circular  md-diameter="100" class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    </div>
+</div>

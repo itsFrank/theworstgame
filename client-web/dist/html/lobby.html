@@ -1,0 +1,36 @@
+<div id="lobby-container" ngController="lobbyController">
+    <div class="lobby-headder">
+        <h2>Room Code: {{lobby.id}}</h2>
+    </div>
+
+    <div class="lobby-body-container">
+        <div class="lobby-body">
+            <h2>Leaderboard</h2>
+            <div class="lobby-table-container">
+                <table>
+                    <tr class="lobby-table-headder">
+                        <td colspan="2"><h3>Player</h3></td>
+                        <td width='50px' class="wins-col"><h3>Wins</h3></td>
+                    </tr>
+                    <tr class="player-row" ng-repeat="player in lobby.players|playerOrder:'wins':true" ng-class-even="'even-player'" ng-class-odd="'odd-player'">
+                        <td width='20px' class="host-col"><i ng-if="player.ishost" class="fa fa-star host-ico"></i><i ng-if="!player.ishost && thisPlayer.ishost" ng-click="kickPlayer(player)" class="fa fa-times host-boot"></i></td>
+                        <td>{{player.name}}</td>
+                        <td width='60px' class="wins-col">{{player.wins}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="lobby-footer">
+        <div ng-if="thisPlayer.ishost" class="host-footer footer-content">
+            <span>You are the <i class="fa fa-star host-ico"></i> host</span>
+            <md-button ng-click="start()" md-no-ink="true" class="md-raised md-accent start-btn">Start Game</md-button>
+        </div>
+        <div ng-if="!thisPlayer.ishost" class="non-host-footer footer-content">
+            <span>Waiting for <i class="fa fa-star host-ico"></i> host to start game...</span>
+        </div>
+    </div>
+
+</div>
