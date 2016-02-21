@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('playvoteController', function($scope, $socket, $gameData, $location, $timeout){
+app.controller('playvoteController', function($scope, $socket, $gameData, $location, $timeout, voteRemoveFilter){
     if(!$socket.connected) $location.path('/');
     if($gameData.lobby === null) $location.path('/');
 

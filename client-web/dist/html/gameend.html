@@ -13,7 +13,7 @@
                         <td width='50px' class="wins-col"><h3>Score</h3></td>
                     </tr>
                     <tr class="player-row" ng-repeat="player in lobby.players|playerOrder:'score':true" ng-class-even="'even-player'" ng-class-odd="'odd-player'">
-                        <td width='20px' class="host-col"><i ng-if="hasBestScore(player.score)" class="fa fa-trophy host-ico"></i><i ng-if="!player.ishost && thisPlayer.ishost" ng-click="kickPlayer(player)" class="fa fa-times host-boot"></i></td>
+                        <td width='20px' class="host-col"><i ng-if="hasBestScore(player.score)" class="fa fa-trophy host-ico"></i></td>
                         <td>{{player.name}}</td>
                         <td width='60px' class="wins-col">{{player.score}}</td>
                     </tr>

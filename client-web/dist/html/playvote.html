@@ -9,7 +9,7 @@
         </div>
 
         <div id="responses-container">
-            <div ng-repeat="response in responses" ng-click="selectResponse(response.id)" class="response-container" ng-class="{'selected-res' : selectedResponse == response.id}">
+            <div ng-repeat="response in responses|voteRemove:thisplayer.id" ng-click="selectResponse(response.id)" class="response-container" ng-class="{'selected-res' : selectedResponse == response.id}">
                 <h3>{{response.response}}</h3>
             </div>
         </div>
