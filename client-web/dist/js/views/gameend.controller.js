@@ -26,7 +26,6 @@ app.controller('gameendController', function($scope, $socket, $gameData, playerO
             if (player2.score == max) {
                 player2.wins += 1;
             }
-            player2.score = 0;
         }
 
         return max;
@@ -38,6 +37,11 @@ app.controller('gameendController', function($scope, $socket, $gameData, playerO
     };
 
     $scope.returnToLobby = function(){
+        for (var key in $scope.lobby.players) {
+            if (!$scope.lobby.players.hasOwnProperty(key)) continue;
+            $scope.lobby.players[key].score = 0;
+        }
+
         $location.path('/lobby');
     };
 

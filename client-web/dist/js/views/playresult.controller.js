@@ -8,7 +8,7 @@ app.controller('playresultController', function($scope, $socket, $gameData, $loc
     $scope.thisPlayer = $gameData.player;
     $gameData.currentScope = $scope;
 
-    $scope.maxtime = 5;
+    $scope.maxtime = 15;
     $scope.timer = $scope.maxtime;
     $scope.progress = 100;
 
