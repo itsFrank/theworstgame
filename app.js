@@ -7,7 +7,7 @@ var socket_manager = require('./server/socket-manager')(io);
 var ip = require('ip');
 
 var address = ip.address();
-var port = '3000';
+var port = '80';
 var client_web_dir = 'client-web/dist';
 
 app.use('/client-web', express.static(__dirname + '/client-web'));
