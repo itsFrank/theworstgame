@@ -98,13 +98,14 @@ app.factory('$socket', function($gameData, $location, $mdDialog, $rootScope){
     };
 
     /// EMIT FUNCTIONS ///
-    socket_obj.createLobby = function(name){
+    socket_obj.createLobby = function(name, cap){
         if (!socket_obj.connected) return;
         console.log('Creating lobby');
 
         socket_obj.socket.emit('createLobby', {
             id : socket_obj.id,
-            name : name
+            name : name,
+            cap : cap
         });
 
         socket_obj.socket.on("lobbyCreated", function(message){
@@ -131,16 +132,7 @@ app.factory('$socket', function($gameData, $location, $mdDialog, $rootScope){
         socket_obj.socket.on("lobbyJoined", function(message){
             console.log("lobbyJoined Recieved");
             if (message.err) {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('Connection Error')
-                        .textContent('Could not connect to game, verify that code is correct and try again')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Ok')
-                        .targetEvent(ev)
-                );
+                $gameData.currentScope.err_msg(message.errmsg);
                 return;
             }
 

@@ -11,7 +11,7 @@ app.controller('lobbyController', function($scope, $socket, $gameData, playerOrd
     $scope.num_questions = 5;
 
     $scope.starting = false;
-    $scope.countdown_time = 0;
+    $scope.countdown_time = 5;
 
     $scope.kickPlayer = function(player){
         if (!$scope.thisPlayer.ishost) return;
@@ -26,7 +26,7 @@ app.controller('lobbyController', function($scope, $socket, $gameData, playerOrd
     $scope.startGame = function(){
         $scope.starting = true;
         $scope.countdown_time = 2;
-        $timeout($scope.countdown, 1000);
+        $timeout($scope.countdown, 500);
     };
 
     $scope.countdown = function(){

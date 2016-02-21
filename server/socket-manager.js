@@ -80,7 +80,7 @@ function createLobby(data){
         code = generateRandomString(5);
     }
 
-    var lobby = new Lobby(code, player);
+    var lobby = new Lobby(code, player, data.cap);
     socket_manager.lobbys[code] = lobby;
 
     socket.join(code);
@@ -97,6 +97,11 @@ function joinLobby(data){
     var lobby = getLobby(socket, data.code, 'lobbyJoined');
 
     if (lobby === null || socket === null || player === null) return;
+
+    if(lobby.numPlayers() >= lobby.player_cap){
+        emitError(socket, 'lobbyJoined', "Lobby Full");
+        return;
+    }
 
     player.name = data.name;
     lobby.addPlayer(player);
@@ -223,7 +228,7 @@ function getLobby(socket, code, response_event) {
 
     if (lobby === null || lobby === undefined) {
         console.log("ERR: INEXISTANT PLAYER ATTEMPTING TO CREATE LOBBY");
-        emitError(socket, response_event, 'Lobby with socket id does not exist');
+        emitError(socket, response_event, 'Lobby with room code does not exist');
         return null;
     }
 

@@ -5,6 +5,7 @@ app.controller('joinLobbyController', function($scope, $socket, $mdDialog, $game
 
     $scope.name = '';
     $scope.code = '';
+    $gameData.currentScope = $scope;
 
     $scope.fixCode = function(){
             $scope.code = $scope.code.replace(/[^a-z]+/gi, '');
@@ -67,5 +68,18 @@ app.controller('joinLobbyController', function($scope, $socket, $mdDialog, $game
         $scope.loading = true;
 
         $socket.joinLobby($scope.code, $scope.name);
+    };
+
+    $scope.err_msg = function(message){
+        $scope.loading = false;
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title('Server Error')
+                .textContent(message)
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Ok')
+        );
     };
 });

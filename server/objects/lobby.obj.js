@@ -1,4 +1,4 @@
-function Lobby(id, host) {
+function Lobby(id, host, cap) {
     this.id = id;
     this.host = host;
     this.players = {};
@@ -9,6 +9,7 @@ function Lobby(id, host) {
     };
     this.state = 0;
     this.round = 0;
+    this.player_cap = cap;
 
     host.lobby_id = id;
 }
@@ -53,5 +54,12 @@ Lobby.prototype.startGame = function(){
     this.state = this.states.playing;
 };
 
+Lobby.prototype.numPlayers = function(){
+    var size = 0, key;
+    for (key in this.players) {
+        if (this.players.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
 module.exports = Lobby;
