@@ -210,7 +210,7 @@ function getPlayer(socket, id, response_event){
     var player = socket_manager.players[id];
 
     if (player === null || player === undefined) {
-        console.log("ERR: INEXISTANT PLAYER ATTEMPTING TO CREATE LOBBY");
+        console.log("ERR: INEXISTANT PLAYER: "+ id +" ATTEMPTING TO CREATE LOBBY");
         emitError(socket, response_event, 'Player with socket id does not exist');
         return null;
     }

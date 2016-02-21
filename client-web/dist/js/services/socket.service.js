@@ -136,7 +136,7 @@ app.factory('$socket', function($gameData, $location, $mdDialog, $rootScope){
                         .parent(angular.element(document.querySelector('#popupContainer')))
                         .clickOutsideToClose(true)
                         .title('Connection Error')
-                        .textContent('Could not connect to game with code: \'' + $scope.code + '\'   verify that code is correct and try again')
+                        .textContent('Could not connect to game, verify that code is correct and try again')
                         .ariaLabel('Alert Dialog Demo')
                         .ok('Ok')
                         .targetEvent(ev)
