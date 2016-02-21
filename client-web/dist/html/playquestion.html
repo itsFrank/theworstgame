@@ -1,0 +1,31 @@
+<div id="playquestion-container" ngController="playquestionController">
+    <div class="playquestion-headder">
+        <h2>Room Code: {{lobby.id}}</h2>
+    </div>
+
+    <div class="playquestion-body-container">
+        <div id="question-container">
+            <h2>{{question}}</h2>
+        </div>
+
+        <div id="response-container">
+            <textarea id="player-response" class="flex-input noresize" ng-model="response" ng-change="fixResponse()" ng-trim="false"></textarea>
+            <p id="char-count">{{response.length}}/100</p>
+        </div>
+
+        <div id="submit-container">
+            <md-button ng-hide="res_sent" id="submit-res-btn" ng-click="sendResponse()" md-no-ink="true" class="md-raised md-accent start-btn">Submit</md-button>
+            <p ng-hide="!res_sent">Response sent! Waiting for other players...</p>
+        </div>
+    </div>
+
+
+    <div class="playquestion-footer">
+        <div progress-bar progress="progress"></div>
+
+        <div class="play-foot-content">
+            Awnsers Submitted: {{submit_count()}}
+        </div>
+
+    </div>
+</div>

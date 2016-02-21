@@ -1,0 +1,27 @@
+<div id="playvote-container" ngController="playvoteController">
+    <div class="playvote-headder">
+        <h2>Room Code: {{lobby.id}}</h2>
+    </div>
+
+    <div class="playvote-body-container">
+        <div id="question-container">
+            <h2>{{question}}</h2>
+        </div>
+
+        <div id="responses-container">
+            <div ng-repeat="response in responses" ng-click="selectResponse(response.id)" class="response-container" ng-class="{'selected-res' : selectedResponse == response.id}">
+                <h3>{{response.response}}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="playvote-footer">
+        <div progress-bar progress="progress"></div>
+
+        <div class="play-foot-content">
+            Votes Submitted: {{submit_count()}}
+            <md-button id="vote-btn" ng-click="vote()" md-no-ink="true" class="md-raised md-accent" ng-disabled="buttonEnabled()">Send Vote</md-button>
+        </div>
+    </div>
+
+</div>

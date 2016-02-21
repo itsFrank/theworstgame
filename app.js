@@ -15,6 +15,7 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/html', express.static(__dirname + '/client-web/dist/html'));
 
 app.get('/',function(req,res){
+  // res.sendFile(path.join(__dirname+ '/' + client_web_dir + '/index.html'));
   res.sendFile(path.join(__dirname+ '/' + client_web_dir + '/index.html'));
 });
 

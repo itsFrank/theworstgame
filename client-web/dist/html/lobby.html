@@ -26,10 +26,17 @@
     <div class="lobby-footer">
         <div ng-if="thisPlayer.ishost" class="host-footer footer-content">
             <span>You are the <i class="fa fa-star host-ico"></i> host</span>
-            <md-button ng-click="start()" md-no-ink="true" class="md-raised md-accent start-btn">Start Game</md-button>
+            <md-button ng-click="sendStart()" md-no-ink="true" class="md-raised md-accent start-btn">Start Game</md-button>
         </div>
         <div ng-if="!thisPlayer.ishost" class="non-host-footer footer-content">
             <span>Waiting for <i class="fa fa-star host-ico"></i> host to start game...</span>
+        </div>
+    </div>
+
+    <div id="starting-countdown-container" class="overlay" ng-class="{'pop-hidden' : !starting}">
+        <div class="popup">
+            <h3>Game Starting In...</h3>
+            <h1 id="start-count-time">{{countdown_time}}</h1>
         </div>
     </div>
 

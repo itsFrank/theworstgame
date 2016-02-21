@@ -3,12 +3,12 @@ function Lobby(id, host) {
     this.host = host;
     this.players = {};
     this.players[host.id] = host;
-    this.game = null;
     this.states = {
         waiting : 0,
         playing : 1
     };
     this.state = 0;
+    this.round = 0;
 
     host.lobby_id = id;
 }
@@ -38,10 +38,6 @@ Lobby.prototype.addPlayer = function(player){
 
 Lobby.prototype.removePlayer = function(player) {
     if (this.hasPlayer(player)) {
-        if (this.state == this.states.playing) {
-            this.game.playerLeft(player);
-        }
-
         delete this.players[player.id];
     }else {
         console.log('ERR: PLAYER NOT FOUND IN ARRAY, NO DELETION');
@@ -52,7 +48,10 @@ Lobby.prototype.playerDisconnected = function(player){
     this.removePlayer(player);
 };
 
-Lobby.prototype.startGame = function(){};
+Lobby.prototype.startGame = function(){
+    console.log("lobby started: " + this.id);
+    this.state = this.states.playing;
+};
 
 
 module.exports = Lobby;

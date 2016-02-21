@@ -1,0 +1,35 @@
+<div id="playresult-container" ngController="playresultController">
+    <div class="playresult-headder">
+        <h2>Room Code: {{lobby.id}}</h2>
+    </div>
+
+    <div class="playresult-body-container">
+        <div id="results-container">
+            <h2 class="res-question">Result: {{question}}</h2>
+            <div class="res-table-container">
+                <table id="result-table">
+                    <tbody class="result-row" ng-class-even="'result-even'" ng-class-odd="'result-odd'" ng-repeat="response in responses|resultOrder:'votes':true">
+                        <tr ng-if="!$first">
+                            <td class="res-spacer" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td  class="res-top-left"><h3>{{response.name}} <i ng-if="hasMostVotes(response.votes)" class="fa fa-trophy"></i></h3></td>
+                            <td class="res-top-right"><h4>Votes: {{response.votes}}</h4></td>
+                        </tr>
+                        <tr class="res-bot">
+                            <td colspan="2" class="res-bot">{{response.response}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="playresult-footer">
+        <div progress-bar progress="progress"></div>
+
+        <div class="play-foot-content">
+        </div>
+    </div>
+
+</div>

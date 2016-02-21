@@ -28,6 +28,22 @@ app.config(['$routeProvider',
                 templateUrl: 'html/lobby.html',
                 controller: 'lobbyController'
             }).
+            when('/playquestion', {
+                templateUrl: 'html/playquestion.html',
+                controller: 'playquestionController'
+            }).
+            when('/playvote', {
+                templateUrl: 'html/playvote.html',
+                controller: 'playvoteController'
+            }).
+            when('/playresult', {
+                templateUrl: 'html/playresult.html',
+                controller: 'playresultController'
+            }).
+            when('/gameend', {
+                templateUrl: 'html/gameend.html',
+                controller: 'gameendController'
+            }).
 //::ROUTE_CURSOR_INDEX::
             otherwise({
                 redirectTo: '/home'

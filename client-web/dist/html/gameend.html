@@ -1,0 +1,31 @@
+<div id="gameend-container" ngController="gameendController">
+    <div class="gameend-headder">
+        <h2>Room Code: {{lobby.id}}</h2>
+    </div>
+
+    <div class="gameend-body-container">
+        <div class="gameend-body">
+            <h2>Final Scores</h2>
+            <div class="gameend-table-container">
+                <table>
+                    <tr class="gameend-table-headder">
+                        <td colspan="2"><h3>Player</h3></td>
+                        <td width='50px' class="wins-col"><h3>Score</h3></td>
+                    </tr>
+                    <tr class="player-row" ng-repeat="player in lobby.players|playerOrder:'score':true" ng-class-even="'even-player'" ng-class-odd="'odd-player'">
+                        <td width='20px' class="host-col"><i ng-if="hasBestScore(player.score)" class="fa fa-trophy host-ico"></i><i ng-if="!player.ishost && thisPlayer.ishost" ng-click="kickPlayer(player)" class="fa fa-times host-boot"></i></td>
+                        <td>{{player.name}}</td>
+                        <td width='60px' class="wins-col">{{player.score}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gameend-footer">
+        <div class="footer-content">
+            <md-button ng-click="returnToLobby()" md-no-ink="true" class="md-raised md-accent start-btn">Return to Lobby</md-button>
+        </div>
+    </div>
+</div>

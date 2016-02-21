@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('lobbyController', function($scope, $socket, $gameData, playerOrderFilter, $location){
+app.controller('lobbyController', function($scope, $socket, $gameData, playerOrderFilter, $location, $timeout){
     if(!$socket.connected) $location.path('/');
     if($gameData.lobby === null) $location.path('/');
 
@@ -8,22 +8,33 @@ app.controller('lobbyController', function($scope, $socket, $gameData, playerOrd
     $scope.thisPlayer = $gameData.player;
     $gameData.currentScope = $scope;
 
+    $scope.num_questions = 5;
+
+    $scope.starting = false;
+    $scope.countdown_time = 0;
 
     $scope.kickPlayer = function(player){
-        console.log(player.name);
         if (!$scope.thisPlayer.ishost) return;
-
         $socket.kickPlayer(player);
     };
-    // $scope.thisPlayer = {};
-    // $scope.thisPlayer.ishost = true;
-    // $scope.lobby = {};
-    //
-    // $scope.lobby.id = 'ABCDE';
-    // $scope.lobby.players = {
-    //     '1' : {name : 'Frank', wins : 3, ishost : true},
-    //     '2' : {name : 'Amar', wins : 1},
-    //     '3' : {name : 'Zak', wins : 4},
-    //     '4' : {name : 'Eugenia', wins : 1},
-    // };
+
+    $scope.sendStart = function(){
+
+        $socket.startGame($scope.num_questions);
+    };
+
+    $scope.startGame = function(){
+        $scope.starting = true;
+        $scope.countdown_time = 2;
+        $timeout($scope.countdown, 1000);
+    };
+
+    $scope.countdown = function(){
+        if ($scope.countdown_time === 1) {
+            $location.path('/playquestion');
+        } else {
+            $scope.countdown_time -= 1;
+            $timeout($scope.countdown, 1000);
+        }
+    };
 });
